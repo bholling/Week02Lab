@@ -16,28 +16,18 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author 643699
  */
-public class AgeCalculatorServlet extends HttpServlet {
+public class IndexServlet extends HttpServlet {
 
 
+    
 
-
-
+  
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
         
-        String Age = request.getParameter("currentage");
-        
-        if(Age == null || Age.isEmpty()){
-            request.setAttribute("errorMessage", "You must give your current age");
-            
-            getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").
-                    forward(request, response);
-            
-        }
-        request.setAttribute("nextYearAge", Integer.parseInt(Age)+1);
-        
-            }
+    }
 
 
     @Override
@@ -45,5 +35,7 @@ public class AgeCalculatorServlet extends HttpServlet {
             throws ServletException, IOException {
         
     }
+
+
 
 }
