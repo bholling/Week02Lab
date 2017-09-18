@@ -4,17 +4,9 @@
         <servlet-name>AgeCalculatorServlet</servlet-name>
         <servlet-class>sait.cprg352.AgeCalculatorServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>IndexServlet</servlet-name>
-        <servlet-class>sait.cprg352.IndexServlet</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>AgeCalculatorServlet</servlet-name>
         <url-pattern>/ageCalculator</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>IndexServlet</servlet-name>
-        <url-pattern>/index</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -22,6 +14,6 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index</welcome-file>
+        <welcome-file>ageCalculator</welcome-file>
     </welcome-file-list>
 </web-app>
