@@ -1,6 +1,6 @@
 <%-- 
-    Document   : ageCalculator
-    Created on : Sep 18, 2017, 9:10:25 AM
+    Document   : index
+    Created on : Sep 18, 2017, 8:20:50 AM
     Author     : 643699
 --%>
 
@@ -9,9 +9,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Next Birthday</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Calculate Next Birthday!</h1>
+        <div><form action="ageCalculator" method="GET">
+                Enter your current age: <input type="text" name="age" value="${currentage}"><br>
+                <input type="submit" value="Submit">
+            </form>            
+        </div>
+        ${errorMessage}
+        ${nextYearAge}
     </body>
 </html>
