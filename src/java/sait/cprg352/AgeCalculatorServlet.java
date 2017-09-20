@@ -25,19 +25,33 @@ public class AgeCalculatorServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/WEB-INF/ageCalculator.jsp").forward(request, response);
         
-        String ageString = request.getParameter("age");
-        int numAge = Integer.parseInt(ageString);
         
-        request.setAttribute("nextYearAge", (numAge+1));
+        String age = request.getParameter("age");
+       
+        if (age == null)
+        {
+            getServletContext().getRequestDispatcher("/WEB-INF/ageCalculator.jsp").forward(request, response);
+        }
         
-        if(ageString.trim().isEmpty() || ageString == null){
+        
+        if(age.isEmpty()){
             request.setAttribute("errorMessage", "You must give your current age");
             
             getServletContext().getRequestDispatcher("/WEB-INF/ageCalculator.jsp").
-                    forward(request, response);
-            return;
+                    forward(request, response);         
+        }
+        
+        
+        
+        try{
+            int nextAge = Integer.parseInt(age)+1;
+            String nextAgeMessage = "Your age next year will be " + nextAge;
+            request.setAttribute("nextYearAge", nextAgeMessage);
+        }
+        
+        catch(NumberFormatException e){
+            request.setAttribute("errorMessage", "You must enter a number");
         }
         
         getServletContext().getRequestDispatcher("/WEB-INF/ageCalculator.jsp").
